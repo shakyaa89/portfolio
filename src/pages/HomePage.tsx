@@ -16,6 +16,7 @@ import {
   X,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import ContactFrom from "../components/ContactFrom";
 
 interface Project {
   id: number;
@@ -44,6 +45,7 @@ const fadeUpVariant = {
 const HomePage: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [showForm, setShowForm] = useState(false);
 
   const projects: Project[] = [
     {
@@ -135,7 +137,7 @@ const HomePage: React.FC = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white overflow-hidden">
+    <div className=" min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white overflow-hidden">
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 bg-black/40 backdrop-blur-lg border-b border-gray-800/50">
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -488,7 +490,7 @@ const HomePage: React.FC = () => {
       {/* Contact Section */}
       <motion.section
         id="contact"
-        className="relative z-10 py-20 px-6"
+        className="relative z-10 pt-20 pb-10 px-6"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
@@ -532,8 +534,19 @@ const HomePage: React.FC = () => {
             </a>
           </div>
 
+          <div className="flex flex-col items-center">
+            <button
+              onClick={() => setShowForm(!showForm)}
+              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/25 mb-10 cursor-pointer"
+            >
+              {showForm ? "Close Form" : "Send a message"}
+            </button>
+            {showForm && <ContactFrom />}
+          </div>
+
           <p className="text-gray-400 text-sm">
-            © {new Date().getFullYear()} Shashwat Shakya. All rights reserved.
+            &copy; {new Date().getFullYear()} Shashwat Shakya. All rights
+            reserved.
           </p>
         </div>
       </motion.section>
