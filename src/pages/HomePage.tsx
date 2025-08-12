@@ -102,7 +102,7 @@ const HomePage: React.FC = () => {
   const techCategories = [
     {
       title: "Programming",
-      items: ["Java", "Python", "JavaScript", "HTML", "CSS"],
+      items: ["Java", "Python", "JavaScript", "TypeScript", "HTML", "CSS"],
       badge: true,
     },
     {
