@@ -7,16 +7,17 @@ export default function ContactForm() {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showErrorMessage, setShowErrorMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false); // new loading state
 
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!formRef.current) return;
 
     const name = (
-      formRef.current.elements.namedItem("from_name") as HTMLInputElement
+      formRef.current.elements.namedItem("name") as HTMLInputElement
     )?.value.trim();
     const email = (
-      formRef.current.elements.namedItem("reply_to") as HTMLInputElement
+      formRef.current.elements.namedItem("email") as HTMLInputElement
     )?.value.trim();
     const subject = (
       formRef.current.elements.namedItem("subject") as HTMLInputElement
@@ -32,23 +33,27 @@ export default function ContactForm() {
       return;
     }
 
+    setIsLoading(true);
+
     emailjs
       .sendForm(
-        "service_7k5pm0f", // Replace with your EmailJS service ID
-        "template_60i2rhi", // Replace with your EmailJS template ID
+        "service_7k5pm0f",
+        "template_60i2rhi",
         formRef.current,
-        "F4zcGUR4fa4VoBuiB" // Replace with your EmailJS public key
+        "F4zcGUR4fa4VoBuiB"
       )
       .then(
         () => {
           setShowErrorMessage(false);
           setShowSuccessMessage(true);
           formRef.current?.reset();
+          setIsLoading(false);
         },
         (error: any) => {
           console.error("Email send failed:", error.text);
           setErrorMessage("Error Sending Email!");
           setShowErrorMessage(true);
+          setIsLoading(false);
         }
       );
   };
@@ -66,6 +71,7 @@ export default function ContactForm() {
         Contact
       </h2>
       <form ref={formRef} onSubmit={sendEmail}>
+        {/* Name */}
         <div className="mb-4">
           <label
             htmlFor="name"
@@ -86,6 +92,7 @@ export default function ContactForm() {
           />
         </div>
 
+        {/* Subject */}
         <div className="mb-4">
           <label
             htmlFor="subject"
@@ -106,6 +113,7 @@ export default function ContactForm() {
           />
         </div>
 
+        {/* Email */}
         <div className="mb-4">
           <label
             htmlFor="email"
@@ -122,10 +130,11 @@ export default function ContactForm() {
               setShowErrorMessage(false);
               setShowSuccessMessage(false);
             }}
-            className="w-full px-4 py-2 rounded-lg bg-gray-900/60 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500/50 "
+            className="w-full px-4 py-2 rounded-lg bg-gray-900/60 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500/50"
           />
         </div>
 
+        {/* Message */}
         <div>
           <label
             htmlFor="message"
@@ -146,9 +155,10 @@ export default function ContactForm() {
           ></textarea>
         </div>
 
+        {/* Success/Error messages */}
         {showSuccessMessage && (
           <motion.p
-            className="text-lg text-green-500 max-w-2xl font-semibold"
+            className="text-lg text-green-500 max-w-2xl font-semibold mt-2"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.3 }}
@@ -159,7 +169,7 @@ export default function ContactForm() {
 
         {showErrorMessage && (
           <motion.p
-            className="text-lg text-red-500 max-w-2xl font-semibold"
+            className="text-lg text-red-500 max-w-2xl font-semibold mt-2"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.3 }}
@@ -168,11 +178,17 @@ export default function ContactForm() {
           </motion.p>
         )}
 
+        {/* Submit button */}
         <button
           type="submit"
-          className="w-full py-3 mt-6 rounded-full bg-gradient-to-r from-blue-500 via-blue-400 to-blue-300 hover:bg-blue-700 text-white font-medium transition duration-200 shadow-md hover:shadow-lg cursor-pointer"
+          disabled={isLoading} // disable while loading
+          className={`w-full py-3 mt-6 rounded-full bg-gradient-to-r from-blue-500 via-blue-400 to-blue-300 text-white font-medium transition duration-200 shadow-md hover:shadow-lg ${
+            isLoading
+              ? "opacity-50 cursor-not-allowed"
+              : "hover:bg-blue-700 cursor-pointer"
+          }`}
         >
-          Submit
+          {isLoading ? "Sending..." : "Submit"}
         </button>
       </form>
     </motion.div>
