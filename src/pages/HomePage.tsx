@@ -16,7 +16,7 @@ import {
   X,
 } from "lucide-react";
 import { motion } from "framer-motion";
-import ContactFrom from "../components/ContactFrom";
+import ContactFrom from "../components/ContactForm";
 
 interface Project {
   id: number;
@@ -81,6 +81,18 @@ const HomePage: React.FC = () => {
         "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop",
       github: "https://github.com/shakyaa89/react-blog",
     },
+    {
+      id: 4,
+      title: "Weather App",
+      projectType: "Personal Project",
+      description:
+        "Developed a weather app that shows the weather of a city entered by the user. OpenWeather API is used to fetch the weather data.",
+      tech: ["React.js", "OpenWeather API"],
+      image:
+        "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop",
+      github: "https://github.com/shakyaa89/react-blog",
+      link: "https://shashwat-weather-app.netlify.app/",
+    },
   ];
 
   const skills: Skill[] = [
@@ -123,6 +135,11 @@ const HomePage: React.FC = () => {
     {
       title: "Currently Exploring",
       items: ["TypeScript", "C#"],
+      badge: true,
+    },
+    {
+      title: "Soft Skills",
+      items: ["Problem Solving", "Teamwork", "Communication"],
       badge: true,
     },
   ];
@@ -327,7 +344,7 @@ const HomePage: React.FC = () => {
                         {category.items.map((item) => (
                           <span
                             key={item}
-                            className="px-3 py-1 bg-blue-500/20 rounded-full text-xs text-blue-300 border border-blue-500/30"
+                            className="px-3 py-1 bg-blue-500/20 rounded-full text-xs text-blue-300 border border-blue-500/30 select-none hover:cursor-default hover:bg-blue-500 hover:text-white transition-colors duration-300"
                           >
                             {item}
                           </span>
@@ -419,11 +436,7 @@ const HomePage: React.FC = () => {
             {projects.map((project) => (
               <motion.div
                 key={project.id}
-                className="group bg-gray-900/60 backdrop-blur-lg rounded-2xl overflow-hidden border border-gray-800 hover:border-blue-500/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25"
-                whileHover={{
-                  scale: 1.05,
-                  boxShadow: "0 0 20px rgba(59, 130, 246, 0.5)",
-                }}
+                className="group bg-gray-900/60 backdrop-blur-lg rounded-2xl overflow-hidden border border-gray-800 hover:border-blue-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/25"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: project.id * 0.15 }}
@@ -453,7 +466,7 @@ const HomePage: React.FC = () => {
                     {project.tech.map((tech) => (
                       <span
                         key={tech}
-                        className="px-3 py-1 bg-blue-500/20 rounded-full text-xs text-blue-300 border border-blue-500/30"
+                        className="px-3 py-1 bg-blue-500/20 rounded-full text-xs text-blue-300 border border-blue-500/30 select-none hover:cursor-default hover:bg-blue-500 hover:text-white transition-colors duration-300"
                       >
                         {tech}
                       </span>
@@ -465,6 +478,7 @@ const HomePage: React.FC = () => {
                       <a
                         href={project.link}
                         className="flex items-center gap-2 px-4 py-2 bg-blue-600/80 rounded-lg text-sm hover:bg-blue-600 transition-colors duration-300"
+                        target="_blank"
                       >
                         <ExternalLink className="w-4 h-4" />
                         Live Demo

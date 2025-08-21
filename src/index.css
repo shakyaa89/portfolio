@@ -18,3 +18,8 @@ select:-webkit-autofill:focus {
 * {
   font-family: "Poppins", sans-serif;
 }
+
+::selection {
+  background-color: #fff;
+  color: #3b82f6;
+}
