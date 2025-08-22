@@ -90,7 +90,7 @@ const HomePage: React.FC = () => {
       tech: ["React.js", "OpenWeather API"],
       image:
         "https://images.unsplash.com/photo-1534068731687-d70176c2e7d5?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      github: "https://github.com/shakyaa89/react-blog",
+      github: "https://github.com/shakyaa89/react-weather-app",
       link: "https://shashwat-weather-app.netlify.app/",
     },
     {
@@ -102,7 +102,7 @@ const HomePage: React.FC = () => {
       tech: ["React.js", "MongoDB", "Express.js", "Node.js", "TailwindCSS"],
       image:
         "https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      github: "https://github.com/shakyaa89/react-blog",
+      github: "https://github.com/shakyaa89/Fullstack-Webapp",
     },
   ];
 
