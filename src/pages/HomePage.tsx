@@ -89,9 +89,20 @@ const HomePage: React.FC = () => {
         "Developed a weather app that shows the weather of a city entered by the user. OpenWeather API is used to fetch the weather data.",
       tech: ["React.js", "OpenWeather API"],
       image:
-        "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1534068731687-d70176c2e7d5?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       github: "https://github.com/shakyaa89/react-blog",
       link: "https://shashwat-weather-app.netlify.app/",
+    },
+    {
+      id: 5,
+      title: "Quiz App",
+      projectType: "Personal Project",
+      description:
+        "Developed a Quiz App to create and manage question sets with multiple questions and choices, featuring dynamic forms, correct answer selection, JWT-based authentication, and responsive Tailwind CSS UI.",
+      tech: ["React.js", "MongoDB", "Express.js", "Node.js", "TailwindCSS"],
+      image:
+        "https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      github: "https://github.com/shakyaa89/react-blog",
     },
   ];
 
@@ -119,7 +130,7 @@ const HomePage: React.FC = () => {
     },
     {
       title: "Frameworks",
-      items: ["React.js", "Node.js", "Express.js", "JakartaEE"],
+      items: ["React.js", "Node.js", "Express.js", "JakartaEE", "TailwindCSS"],
       badge: true,
     },
     {
