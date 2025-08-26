@@ -15,7 +15,7 @@ import {
   Menu,
   X,
 } from "lucide-react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import ContactFrom from "../components/ContactForm";
 
 interface Project {
@@ -103,6 +103,17 @@ const HomePage: React.FC = () => {
       image:
         "https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       github: "https://github.com/shakyaa89/Fullstack-Webapp",
+    },
+    {
+      id: 6,
+      title: "Movie Details App",
+      projectType: "Personal Project",
+      description:
+        "A responsive movie details app using TMDB API to browse and view movies with posters, overviews, and release dates.",
+      tech: ["React.js", "Express.js", "Node.js", "TailwindCSS"],
+      image:
+        "https://images.unsplash.com/photo-1478720568477-152d9b164e26?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      github: "https://github.com/shakyaa89/react-movie-details",
     },
   ];
 
@@ -434,7 +445,7 @@ const HomePage: React.FC = () => {
         className="relative z-10 py-20 px-6"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.1 }}
         variants={fadeUpVariant}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
@@ -566,7 +577,19 @@ const HomePage: React.FC = () => {
             >
               {showForm ? "Close Form" : "Send a message"}
             </button>
-            {showForm && <ContactFrom />}
+            <AnimatePresence>
+              {showForm && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+                  transition={{ duration: 0.4 }}
+                  className="w-full flex  justify-center items-center"
+                >
+                  <ContactFrom />
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
 
           <p className="text-gray-400 text-sm">
