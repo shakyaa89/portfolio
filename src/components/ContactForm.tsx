@@ -1,13 +1,20 @@
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
+import toast from "react-hot-toast";
 
 export default function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null);
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  const [showErrorMessage, setShowErrorMessage] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+
   const [isLoading, setIsLoading] = useState(false); // new loading state
+
+  function messageToast(message: string = "", messageType: string = "") {
+    if (messageType === "success") {
+      toast.success(`${message}`);
+    } else {
+      toast.error(`${message}`);
+    }
+  }
 
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -27,9 +34,7 @@ export default function ContactForm() {
     )?.value.trim();
 
     if (name === "" || email === "" || message === "" || subject === "") {
-      setErrorMessage("Please fill in all the fields!");
-      setShowErrorMessage(true);
-      setShowSuccessMessage(false);
+      messageToast("Please fill in all the fields!", "error");
       return;
     }
 
@@ -44,15 +49,12 @@ export default function ContactForm() {
       )
       .then(
         () => {
-          setShowErrorMessage(false);
-          setShowSuccessMessage(true);
+          messageToast("Message sent successfully!", "success");
           formRef.current?.reset();
           setIsLoading(false);
         },
-        (error: any) => {
-          console.error("Email send failed:", error.text);
-          setErrorMessage("Error Sending Email!");
-          setShowErrorMessage(true);
+        () => {
+          messageToast("Error Sending Email!", "error");
           setIsLoading(false);
         }
       );
@@ -84,10 +86,6 @@ export default function ContactForm() {
             name="name"
             type="text"
             placeholder="Your name"
-            onChange={() => {
-              setShowErrorMessage(false);
-              setShowSuccessMessage(false);
-            }}
             className="w-full px-4 py-2 rounded-lg bg-gray-900/60 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500/50"
           />
         </div>
@@ -105,10 +103,6 @@ export default function ContactForm() {
             name="subject"
             type="text"
             placeholder="Subject"
-            onChange={() => {
-              setShowErrorMessage(false);
-              setShowSuccessMessage(false);
-            }}
             className="w-full px-4 py-2 rounded-lg bg-gray-900/60 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500/50"
           />
         </div>
@@ -126,10 +120,6 @@ export default function ContactForm() {
             name="email"
             type="email"
             placeholder="you@example.com"
-            onChange={() => {
-              setShowErrorMessage(false);
-              setShowSuccessMessage(false);
-            }}
             className="w-full px-4 py-2 rounded-lg bg-gray-900/60 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500/50"
           />
         </div>
@@ -147,36 +137,9 @@ export default function ContactForm() {
             name="message"
             placeholder="Write your message..."
             rows={5}
-            onChange={() => {
-              setShowErrorMessage(false);
-              setShowSuccessMessage(false);
-            }}
             className="w-full px-4 py-2 rounded-lg bg-gray-900/60 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500/50 resize-none"
           ></textarea>
         </div>
-
-        {/* Success/Error messages */}
-        {showSuccessMessage && (
-          <motion.p
-            className="text-lg text-green-500 max-w-2xl font-semibold mt-2"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.3 }}
-          >
-            Email Sent!
-          </motion.p>
-        )}
-
-        {showErrorMessage && (
-          <motion.p
-            className="text-lg text-red-500 max-w-2xl font-semibold mt-2"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.3 }}
-          >
-            {errorMessage}
-          </motion.p>
-        )}
 
         {/* Submit button */}
         <button
