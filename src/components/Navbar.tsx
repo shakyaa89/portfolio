@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Hamburger, Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { AnimatedHamburgerButton } from "./HamburgerButton";
 
