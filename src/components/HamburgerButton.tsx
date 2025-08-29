@@ -17,7 +17,7 @@ export const AnimatedHamburgerButton: React.FC<
       <motion.button
         initial={false}
         animate={active ? "open" : "closed"}
-        className="relative h-6 w-6 rounded-full bg-white/0 transition-colors hover:bg-white/20"
+        className="relative h-6 w-6"
       >
         <motion.span
           variants={VARIANTS.top}
