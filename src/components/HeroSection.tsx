@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import MyPhoto from "../assets/MyPhoto.jpg";
+import ScrambleButton from "./ScrambleButton";
 
 interface HeroProps {
   scrollToSection: (sectionId: string) => void;
@@ -59,11 +60,8 @@ const HeroSection: React.FC<HeroProps> = ({ scrollToSection }) => {
           animate={{ opacity: 1 }}
           transition={{ delay: 1.1, duration: 0.8 }}
         >
-          <button
-            onClick={() => scrollToSection("projects")}
-            className="px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/25"
-          >
-            View My Work
+          <button onClick={() => scrollToSection("projects")}>
+            <ScrambleButton />
           </button>
         </motion.div>
 
