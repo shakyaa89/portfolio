@@ -1,20 +1,15 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import toast from "react-hot-toast";
 
-export default function ContactForm() {
+const ContactForm = () => {
   const formRef = useRef<HTMLFormElement>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const [isLoading, setIsLoading] = useState(false); // new loading state
-
-  function messageToast(message: string = "", messageType: string = "") {
-    if (messageType === "success") {
-      toast.success(`${message}`);
-    } else {
-      toast.error(`${message}`);
-    }
-  }
+  const messageToast = (message: string, messageType: "success" | "error") => {
+    messageType === "success" ? toast.success(message) : toast.error(message);
+  };
 
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -156,4 +151,6 @@ export default function ContactForm() {
       </form>
     </motion.div>
   );
-}
+};
+
+export default ContactForm;

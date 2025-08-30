@@ -1,15 +1,12 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { techCategories, skills } from "../data/data.ts";
-
-interface AboutSectionProps {}
 
 const fadeUpVariant = {
   hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0 },
 };
 
-const AboutSection: React.FC<AboutSectionProps> = () => {
+const AboutSection = () => {
   return (
     <motion.section
       id="about"

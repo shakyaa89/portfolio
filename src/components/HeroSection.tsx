@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import MyPhoto from "../assets/MyPhoto.jpg";
@@ -8,7 +7,7 @@ interface HeroProps {
   scrollToSection: (sectionId: string) => void;
 }
 
-const HeroSection: React.FC<HeroProps> = ({ scrollToSection }) => {
+const HeroSection = ({ scrollToSection }: HeroProps) => {
   return (
     <motion.section
       id="home"

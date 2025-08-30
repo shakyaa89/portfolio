@@ -2,8 +2,6 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { AnimatedHamburgerButton } from "./HamburgerButton";
 
-const navLinks = ["home", "about", "projects", "contact"];
-
 interface NavbarProps {
   activeSection: string;
   setActiveSection: (section: string) => void;
@@ -32,7 +30,9 @@ const linkVariants = {
   closed: { opacity: 0, y: -10, transition: { duration: 0.2 } },
 };
 
-const Navbar: React.FC<NavbarProps> = ({ activeSection, setActiveSection }) => {
+const navLinks = ["home", "about", "projects", "contact"];
+
+const Navbar = ({ activeSection, setActiveSection }: NavbarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const scrollToSection = (sectionId: string) => {

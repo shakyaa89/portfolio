@@ -1,9 +1,8 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { projects } from "../data/data.ts";
 import { ExternalLink, Github } from "lucide-react";
 
-const ProjectsSection: React.FC = () => {
+const ProjectsSection = () => {
   return (
     <motion.section
       id="projects"

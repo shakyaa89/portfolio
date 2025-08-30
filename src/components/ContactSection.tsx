@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Mail, Linkedin, Github } from "lucide-react";
-import ContactForm from "../components/ContactForm";
+import ContactForm from "./ContactForm";
 
 const fadeUpVariant = {
   hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0 },
 };
 
-const ContactSection: React.FC = () => {
+const ContactSection = () => {
   const [showForm, setShowForm] = useState(false);
 
   return (
