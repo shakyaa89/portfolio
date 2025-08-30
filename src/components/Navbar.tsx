@@ -1,13 +1,8 @@
 import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, type Variants } from "framer-motion";
 import { AnimatedHamburgerButton } from "./HamburgerButton";
 
-interface NavbarProps {
-  activeSection: string;
-  setActiveSection: (section: string) => void;
-}
-
-const menuVariants = {
+const menuVariants: Variants = {
   open: {
     opacity: 1,
     transition: {
@@ -25,10 +20,42 @@ const menuVariants = {
   },
 };
 
-const linkVariants = {
+const linkVariants: Variants = {
   open: { opacity: 1, y: 0, transition: { duration: 0.3 } },
   closed: { opacity: 0, y: -10, transition: { duration: 0.2 } },
 };
+
+const navVariants: Variants = {
+  hidden: { y: -50, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: { type: "spring", stiffness: 80, damping: 12 },
+  },
+};
+
+const logoVariants: Variants = {
+  hidden: { opacity: 0, y: -20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 100, damping: 10 },
+  },
+};
+
+const buttonVariants: Variants = {
+  hidden: { opacity: 0, y: -10 },
+  visible: (i: number = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.1, duration: 0.3 },
+  }),
+};
+
+interface NavbarProps {
+  activeSection: string;
+  setActiveSection: (section: string) => void;
+}
 
 const navLinks = ["home", "about", "projects", "contact"];
 
@@ -43,26 +70,43 @@ const Navbar = ({ activeSection, setActiveSection }: NavbarProps) => {
   };
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-black/40 backdrop-blur-lg border-b border-gray-800/50">
+    <motion.nav
+      className="fixed top-0 w-full z-50 bg-black/40 backdrop-blur-lg border-b border-gray-800/50"
+      variants={navVariants}
+      initial="hidden"
+      animate="visible"
+    >
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-        <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+        {/* Animated logo */}
+        <motion.div
+          className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent select-none"
+          variants={logoVariants}
+          initial="hidden"
+          animate="visible"
+        >
           Shashwat Shakya
-        </div>
+        </motion.div>
 
+        {/* Desktop nav links */}
         <div className="hidden md:flex space-x-8">
-          {navLinks.map((section) => (
-            <button
+          {navLinks.map((section, i) => (
+            <motion.button
               key={section}
               onClick={() => scrollToSection(section)}
-              className={`capitalize transition-colors duration-300 hover:text-blue-400 ${
+              className={`capitalize transition-colors duration-300 hover:text-blue-400 select-none cursor-pointer ${
                 activeSection === section ? "text-blue-400" : "text-gray-300"
               }`}
+              variants={buttonVariants}
+              initial="hidden"
+              animate="visible"
+              custom={i}
             >
               {section}
-            </button>
+            </motion.button>
           ))}
         </div>
 
+        {/* Hamburger button */}
         <button
           className="md:hidden text-gray-300"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -72,6 +116,7 @@ const Navbar = ({ activeSection, setActiveSection }: NavbarProps) => {
         </button>
       </div>
 
+      {/* Mobile menu */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
@@ -99,7 +144,7 @@ const Navbar = ({ activeSection, setActiveSection }: NavbarProps) => {
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </motion.nav>
   );
 };
 
