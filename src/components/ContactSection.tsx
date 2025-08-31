@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, Linkedin, Github } from "lucide-react";
 import ContactForm from "./ContactForm";
+import SocialButtons from "./SocialButton";
 
 const fadeUpVariant = {
   hidden: { opacity: 0, y: 40 },
@@ -32,7 +32,7 @@ const ContactSection = () => {
         </p>
 
         <div className="flex justify-center gap-8 mb-8">
-          <a
+          {/* <a
             href="mailto:shashwatshakya89@gmail.com"
             className="text-blue-400 hover:text-blue-600 transition-colors duration-300"
             aria-label="Email"
@@ -55,7 +55,8 @@ const ContactSection = () => {
           >
             <Github className="w-10 h-10 mx-auto" />
             <span className="block mt-2 text-sm">GitHub</span>
-          </a>
+          </a> */}
+          <SocialButtons />
         </div>
 
         <div className="flex flex-col items-center">
