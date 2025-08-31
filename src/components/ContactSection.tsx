@@ -31,31 +31,7 @@ const ContactSection = () => {
           to reach out to me through any of the following platforms:
         </p>
 
-        <div className="flex justify-center gap-8 mb-8">
-          {/* <a
-            href="mailto:shashwatshakya89@gmail.com"
-            className="text-blue-400 hover:text-blue-600 transition-colors duration-300"
-            aria-label="Email"
-          >
-            <Mail className="w-10 h-10 mx-auto" />
-            <span className="block mt-2 text-sm">Email</span>
-          </a>
-          <a
-            href="https://www.linkedin.com/in/shashwat-shakya-210a66301"
-            className="text-blue-400 hover:text-blue-600 transition-colors duration-300"
-            aria-label="LinkedIn"
-          >
-            <Linkedin className="w-10 h-10 mx-auto" />
-            <span className="block mt-2 text-sm">LinkedIn</span>
-          </a>
-          <a
-            href="https://github.com/shakyaa89"
-            className="text-blue-400 hover:text-blue-600 transition-colors duration-300"
-            aria-label="GitHub"
-          >
-            <Github className="w-10 h-10 mx-auto" />
-            <span className="block mt-2 text-sm">GitHub</span>
-          </a> */}
+        <div className="flex justify-center gap-8 mb-6">
           <SocialButtons />
         </div>
 

@@ -7,6 +7,7 @@ function SocialButtons() {
           My Socials
         </h1>
       </div>
+
       <div className="absolute inset-0 flex items-center justify-evenly lg:opacity-0 opacity-100 group-hover:opacity-100 transition-opacity duration-300 ease-in">
         <a
           href="mailto:shashwatshakya89@gmail.com"
