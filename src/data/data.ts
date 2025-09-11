@@ -42,17 +42,6 @@ export const projects: Project[] = [
   },
   {
     id: 3,
-    title: "Blog Application",
-    projectType: "Personal Project",
-    description:
-      "Developed a full-stack blog website using MERN stack with user authentication, CRUD operations, responsive UI, and RESTful API integration.",
-    tech: ["React.js", "Node.js", "MongoDB", "Express.js"],
-    image:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop",
-    github: "https://github.com/shakyaa89/react-blog",
-  },
-  {
-    id: 4,
     title: "Weather App",
     projectType: "Personal Project",
     description:
@@ -64,7 +53,7 @@ export const projects: Project[] = [
     link: "https://shashwat-weather-app.netlify.app/",
   },
   {
-    id: 5,
+    id: 4,
     title: "Quiz App",
     projectType: "Personal Project",
     description:
@@ -75,7 +64,7 @@ export const projects: Project[] = [
     github: "https://github.com/shakyaa89/Fullstack-Webapp",
   },
   {
-    id: 6,
+    id: 5,
     title: "Movie Details App",
     projectType: "Personal Project",
     description:
@@ -87,7 +76,7 @@ export const projects: Project[] = [
     link: "https://shashwat-movie-app.netlify.app/",
   },
   {
-    id: 7,
+    id: 6,
     title: "Chat App",
     projectType: "Personal Project",
     description:
