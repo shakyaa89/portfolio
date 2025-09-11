@@ -86,6 +86,25 @@ export const projects: Project[] = [
     github: "https://github.com/shakyaa89/react-movie-details",
     link: "https://shashwat-movie-app.netlify.app/",
   },
+  {
+    id: 7,
+    title: "Chat App",
+    projectType: "Personal Project",
+    description:
+      "A MERN-based chat app using Socket.IO featuring real-time messaging, authentication and media sharing. It stores conversations in MongoDB, provides instant updates, and ensures seamless user communication.",
+    tech: [
+      "React.js",
+      "Express.js",
+      "Node.js",
+      "MongoDB",
+      "Socket.IO",
+      "JWT Authentication",
+      "TailwindCSS",
+    ],
+    image:
+      "https://images.unsplash.com/photo-1611606063065-ee7946f0787a?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    github: "https://github.com/shakyaa89/mern-chat-app",
+  },
 ];
 
 export const skills: Skill[] = [
