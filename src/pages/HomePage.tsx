@@ -4,6 +4,7 @@ import HeroSection from "../components/HeroSection";
 import AboutSection from "../components/AboutSection";
 import ProjectsSection from "../components/ProjectsSection";
 import ContactSection from "../components/ContactSection";
+import ChatSection from "../components/ChatSection";
 
 const HomePage: React.FC = () => {
   const [activeSection, setActiveSection] = useState("home");
@@ -35,16 +36,19 @@ const HomePage: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white overflow-hidden">
-      <Navbar
-        activeSection={activeSection}
-        setActiveSection={setActiveSection}
-      />
-      <HeroSection scrollToSection={scrollToSection} />
-      <AboutSection />
-      <ProjectsSection />
-      <ContactSection />
-    </div>
+    <>
+      <ChatSection />
+      <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white overflow-hidden">
+        <Navbar
+          activeSection={activeSection}
+          setActiveSection={setActiveSection}
+        />
+        <HeroSection scrollToSection={scrollToSection} />
+        <AboutSection />
+        <ProjectsSection />
+        <ContactSection />
+      </div>
+    </>
   );
 };
 
