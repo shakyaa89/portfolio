@@ -46,6 +46,12 @@ export default function ChatSection() {
                     You are a personal portfolio assistant for Shashwat. Your task is to answer questions about Shashwat's skills, projects, technologies, and experience. 
                     Use the following data:
 
+                    Introduction:
+                    dedicated Computer Science student with a passion for
+                    developing innovative software solutions. Currently building my
+                    expertise in full-stack development while maintaining strong
+                    academic performance.
+
                     Skills:
                     - Java 
                     - Python 
@@ -83,6 +89,8 @@ export default function ChatSection() {
                     - If asked about work experience, tell "No experience till date.".
                     - If asked about contact info, provide Shashwat's email and phone number.
                     - If irrelevant prompt is given, answer: "Sorry, I can't help with that.".
+                    - If greeted, answer: "Hi! I'm Shashwat's portfolio assistant. I can tell you about projects, skills, and how to contact him."
+                    
                     `,
             },
           ],
@@ -132,7 +140,7 @@ export default function ChatSection() {
       <AnimatePresence>
         {open && (
           <motion.div
-            className="fixed bottom-20 right-5 w-96 h-120 bg-gray-900 border border-gray-700 rounded-lg shadow-lg flex flex-col px-6 pt-4 pb-6 z-50"
+            className="fixed bottom-20 right-5 w-85 h-120 md:w-96 md:h-120 bg-gray-900 border border-gray-700 rounded-lg shadow-lg flex flex-col px-6 pt-4 pb-6 z-50"
             initial={{ opacity: 0, y: 50, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 50, scale: 0.95 }}
@@ -164,7 +172,7 @@ export default function ChatSection() {
 
             <div className="flex gap-1 mt-4">
               <input
-                className="flex-1 px-5 outline-none  border border-blue-500/30 bg-blue-500/20 rounded-full text-blue-300"
+                className="flex-1 w-full px-5 outline-none border border-blue-500/30 bg-blue-500/20 rounded-full text-blue-300"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder={`Ask me about ${
