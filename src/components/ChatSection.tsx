@@ -10,6 +10,8 @@ export default function ChatSection() {
   const [input, setInput] = useState("");
   const bodyRef = useRef<HTMLDivElement>(null);
 
+  const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+
   const placeholders = ["skills", "projects", "experience", "contact info"];
 
   useEffect(() => {
@@ -91,7 +93,7 @@ export default function ChatSection() {
 
     try {
       const res = await fetch(
-        "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=AIzaSyBVrSRBzl-1VHunEK5kANT9JkUjRrB3uyY",
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
